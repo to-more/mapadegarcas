@@ -10,4 +10,5 @@ class Entity
   field :title, type: String
 
   accepts_nested_attributes_for :meta
+
 end

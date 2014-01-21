@@ -6,7 +6,7 @@ class EntitiesController < ApplicationController
   # GET /entities
   # GET /entities.json
   def index
-    @entities = Entity.all
+    @entities = Entity.any_of( { :title => /.*#{params[:search]}.*/i } )
   end
 
   # GET /entities/1
