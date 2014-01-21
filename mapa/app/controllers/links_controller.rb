@@ -69,6 +69,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params[:link]
+      params[:link].permit( meta_attributes: [:key, :value] )
     end
 end

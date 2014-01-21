@@ -1,4 +1,4 @@
-<%= form_for(@entity) do |f| %>
+<%= form_for(setup_entity(@entity)) do |f| %>
   <% if @entity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
@@ -12,10 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, "Nombre" %><br>
     <%= f.autocomplete_field :title, autocomplete_entity_title_entities_path %>
   </div>
+
+  <h4>Metadatos</h4>
+
+  <%= f.fields_for :meta do |ff| %>
+    <div class="row">
+    <div class="field col-md-6">
+      <%= ff.label :key, "Campo" %>
+      <%= ff.autocomplete_field :key, autocomplete_metum_key_meta_path %>
+    </div>
+    <div class="field col-md-6">
+      <%= ff.label :value, "Valor" %>
+      <%= ff.autocomplete_field :value, autocomplete_metum_value_meta_path %>
+    </div>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar entidad" %>
   </div>
 <% end %>

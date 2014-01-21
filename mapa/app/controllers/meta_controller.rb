@@ -1,6 +1,9 @@
 class MetaController < ApplicationController
   before_action :set_metum, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :metum, :key, :full => true
+  autocomplete :metum, :value, :full => true
+
   # GET /meta
   # GET /meta.json
   def index

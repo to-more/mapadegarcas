@@ -11,7 +11,10 @@ Mapa::Application.routes.draw do
     resources :meta
   end
 
-  resources :meta
+  resources :meta do
+    get :autocomplete_metum_key, :on => :collection
+    get :autocomplete_metum_value, :on => :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
